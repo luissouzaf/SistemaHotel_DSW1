@@ -10,13 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
 import br.ufscar.dc.dsw.bean.ListagemPorCidadeBean;
 import br.ufscar.dc.dsw.domain.Hotel;
 
-@WebServlet(urlPatterns = {"/ListagemDeHoteisPorCidade"})
+@WebServlet(urlPatterns = {"/listagemDeHoteisPorCidade"})
 public class ListagemDeHoteisPorCidadeController extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
@@ -26,16 +23,18 @@ public class ListagemDeHoteisPorCidadeController extends HttpServlet{
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
 
-        String nome = request.getParameter("term");
+        String nome = request.getParameter("cidade");
+        String buffer = "<tr>"
+        				+ "<td>Hotel</td>"
+        				+ "<td><select id='hotel' name='hotel' onchange='apresenta()'>"
+        				+ "<option value=''>Selecione o hotel</option>";
+        List<Hotel> hoteisEncontrados = new ListagemPorCidadeBean().getHotelPorCidade(nome);
+        for (Hotel hotelEncontrado : hoteisEncontrados)
+        	buffer += "<option value='" + hotelEncontrado.getNome() + "'>" + hotelEncontrado.getNome() + "</option>";
+        buffer += "</select></td>";
 
-        Gson gsonBuilder = new GsonBuilder().create();
-        List<String> hoteisPorCidade = new ArrayList<>();
-        for (Hotel hotel : new ListagemPorCidadeBean().getHotelPorCidade(nome)) {
-        	hoteisPorCidade.add(hotel.getNome());
-        }
-
-        System.out.println(gsonBuilder.toJson(hoteisPorCidade));
-        response.getWriter().write(gsonBuilder.toJson(hoteisPorCidade));
+        //System.out.println(buffer);
+        response.getWriter().println(buffer);
     }
 
     @Override
