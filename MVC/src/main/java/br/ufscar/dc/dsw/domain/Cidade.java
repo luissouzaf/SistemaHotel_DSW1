@@ -2,27 +2,27 @@ package br.ufscar.dc.dsw.domain;
 
 public class Cidade {
 	
-	private String nomeCidade;
-	private String nomeHotelDaCidade;
+	private String nome;
+	private String hotel;
 	
-	public Cidade (String nomeCidade) {
-		this.nomeCidade = nomeCidade;
-		this.nomeHotelDaCidade = null;
+	public Cidade(String nome) {
+		this.nome = nome;
+		this.hotel = null;
 	}
 	
-	public String getNomeCidade() {
-		return this.nomeCidade;
+	public String getCidade() {
+		return this.nome;
 	}
 	
-	public void setCidade(String nomeCidade) {
-		this.nomeCidade = nomeCidade;
+	public void setCidade(String nome) {
+		this.nome = nome;
 	}
 	
-	public void setNomeHotelDaCidade (String nomeHotelDaCidade) {
-		this.nomeHotelDaCidade = nomeHotelDaCidade;
+	public void setHotel(String hotel) {
+		this.hotel = hotel;
 	}
 	
-	public String getNomeHotelDaCidade () {
-		return this.nomeHotelDaCidade;
+	public String getHotel() {
+		return this.hotel;
 	}
 }
