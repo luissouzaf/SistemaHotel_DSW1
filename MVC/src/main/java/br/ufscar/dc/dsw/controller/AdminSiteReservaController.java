@@ -73,12 +73,10 @@ public class AdminSiteReservaController extends HttpServlet {
 
         //System.out.println(listaSiteReserva);
         
-        
         request.setAttribute("listaSiteReserva", listaSiteReserva);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/sitereserva/lista.jsp");
         dispatcher.forward(request, response);
     }
-
     
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
