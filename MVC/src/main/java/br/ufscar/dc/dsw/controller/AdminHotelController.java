@@ -74,13 +74,11 @@ public class AdminHotelController extends HttpServlet {
         List<Hotel> listaHotel = dao.getAll();
 
         //System.out.println(listaHotel);
-        
-        
+           
         request.setAttribute("listaHotel", listaHotel);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/hotel/lista.jsp");
         dispatcher.forward(request, response);
     }
-
     
     private void apresentaFormCadastro(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
