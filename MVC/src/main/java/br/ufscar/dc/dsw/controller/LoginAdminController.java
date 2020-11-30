@@ -54,7 +54,6 @@ public class LoginAdminController extends HttpServlet {
 				
 				SiteReservaDAO daoSiteReserva = new SiteReservaDAO();
 				SiteReserva usuarioSiteReserva = daoSiteReserva.getbyLogin(login);
-				
 	           
 				String[] dominio = login.split("@"); //separando o email de login em um array com as palavras antes e depois do "@"
 				
