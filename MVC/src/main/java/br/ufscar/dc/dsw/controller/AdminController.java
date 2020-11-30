@@ -32,7 +32,7 @@ public class AdminController extends HttpServlet {
     	if (usuario == null) {
     		response.sendRedirect(request.getContextPath());
     	} else if (dominio[1].equals("admin.com")) {
-    		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/index.jsp");
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/login_admin.jsp");
             dispatcher.forward(request, response);
     	} else {
     		erros.add("Acesso não autorizado!");
