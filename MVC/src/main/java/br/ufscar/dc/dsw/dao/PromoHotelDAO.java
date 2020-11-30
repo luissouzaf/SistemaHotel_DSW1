@@ -147,7 +147,6 @@ public class PromoHotelDAO extends GenericDAO {
         return listapromohotel;
     }
 
-
     public void delete(PromoHotel promohotel) {
         String sql = "DELETE FROM PromoHotel where id = ?";
 
