@@ -67,7 +67,6 @@ public class HotelController extends HttpServlet {
     	String[] dominio = usuario.getEmail().split("@");  //para definir o papel do usuario pelo dominio email
     	//System.out.println(usuario.getAll);
     	
-    	
     	if (usuario == null) {
     		response.sendRedirect(request.getContextPath());
     		return;
@@ -211,16 +210,16 @@ public class HotelController extends HttpServlet {
 
     private void listaTodosHoteis(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Hotel> listaHotel = daoHotel.getAll();
-        request.setAttribute("listaHotel", listaHotel);
+        List<Hotel> listaHoteis = daoHotel.getAll();
+        request.setAttribute("listaHoteis", listaHoteis);
         RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteis.jsp");
         dispatcher.forward(request, response);
     }
 
     private void listaHoteisPorCidade(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        List<Cidade> listaCidade = daoCidade.getAll();
-        request.setAttribute("listaCidade", listaCidade);
+        List<Cidade> listaCidades = daoCidade.getAll();
+        request.setAttribute("listaCidades", listaCidades);
         RequestDispatcher dispatcher = request.getRequestDispatcher("listaTodosHoteisPorCidade.jsp");
         dispatcher.forward(request, response);
     }
