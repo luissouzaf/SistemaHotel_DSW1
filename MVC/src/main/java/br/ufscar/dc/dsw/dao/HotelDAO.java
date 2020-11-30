@@ -171,8 +171,8 @@ public class HotelDAO extends GenericDAO {
 		try {
             Connection conn = this.getConnection();
             Statement statement = conn.createStatement();
-
             ResultSet resultSet = statement.executeQuery(sql);
+
             while (resultSet.next()) {
             	Long id = resultSet.getLong("id");
             	String cnpj = resultSet.getString("cnpj");
