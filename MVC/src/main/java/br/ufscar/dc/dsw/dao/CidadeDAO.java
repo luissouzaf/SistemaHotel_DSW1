@@ -9,12 +9,13 @@ import java.util.List;
 
 import br.ufscar.dc.dsw.domain.Cidade;
 
+//Método getAll retorna uma lista com todas as cidades inseridas no banco de dados Hoteis.
 public class CidadeDAO extends GenericDAO{
-	// getAll retorna uma lista com todas as cidades
+
 	public List<Cidade> getAll(){
-		List<Cidade> listaCidades = new ArrayList<>();
+		List<Cidade> listaCidades = new ArrayList<>();		
 		
-		String sql = "SELECT * from Hotel order by cidade";;
+		String sql = "SELECT DISTINCT nome, cidade FROM Hotel ORDER BY cidade";
 		
 		try {
             Connection conn = this.getConnection();
@@ -23,11 +24,11 @@ public class CidadeDAO extends GenericDAO{
             ResultSet resultSet = statement.executeQuery(sql);
             while (resultSet.next()) {
             	String nomeCidade = resultSet.getString("cidade");
-                Cidade cidade = new Cidade(nomeCidade);
-
-                cidade.setNomeHotelDaCidade(resultSet.getString("nome"));
-
-                listaCidades.add(cidade);
+                if (!listaCidades.contains(nomeCidade)) {
+                    Cidade cidade = new Cidade(nomeCidade);
+                    cidade.setHotel(resultSet.getString("nome"));
+                    listaCidades.add(cidade);
+                }
             }
             
             resultSet.close();
