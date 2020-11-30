@@ -12,7 +12,7 @@
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
 	
-	<jsp:useBean id='bean' class='br.ufscar.dc.dsw.bean.ListagemPorCidadeBean'/>
+	<jsp:useBean id="bean" class="br.ufscar.dc.dsw.bean.ListagemPorCidadeBean"/>
 	
 	<strong>Acesso ao Sistema</strong><br>
 	<a href="login.jsp" title="Fazer login">Entre</a><br><br>
@@ -28,39 +28,20 @@
 		<table border="1">
 			<caption>Lista de Hotéis</caption>
 			<tr>
-				<th>Email</th>
-				<th>Senha</th>
-				<th>CNPJ</th>
 				<th>Nome</th>
+				<th>Email</th>
 				<th>Cidade</th>
+				<th>CNPJ</th>
 			</tr>
 			<c:forEach var="hotel" items="${requestScope.listaHoteis}">
 				<tr>
-					<td>${hotel.email}</td>
-					<td>${hotel.senha}</td>
-					<td>${hotel.cnpj}</td>
 					<td>${hotel.nome}</td>
+					<td>${hotel.email}</td>
 					<td>${hotel.cidade}</td>
+					<td>${hotel.cnpj}</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<form name ='form'>
-			<table>
-                <tr id='cidades'>    
-                    <td>
-                        Listar por cidade
-                    </td>
-                    <td>
-                        <select id='cidade' name='cidade' onchange='cidadeSelecionada(this.value)'>
-	                        <option value='--'>--</option>
-	                            <c:forEach items='${cidade}' var='cidade'>
-	                                <option value='${bean.cidade}'>${bean.getAll}</option>
-	                            </c:forEach>
-                        </select>
-                    </td> 
-                </tr>
-            </table>
-		</form>
 	</div>
 </body>
 </html>
