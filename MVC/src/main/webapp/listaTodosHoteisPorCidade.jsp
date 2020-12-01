@@ -6,23 +6,26 @@
 
 <!DOCTYPE html>
 <html>
+<fmt:bundle basename="messages">
 <head>
 	<meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
 	<script src="js/ajaxListagemPorCampoSelecao.js"></script>
     
-	<title>Lista de hotéis de acordo com a cidade</title>
+	<title>
+		<fmt:message key="listaTodosHoteisPorCidadeTitle"/>
+	</title>
 </head>
 <body>
 
 	<jsp:useBean id="bean" class="br.ufscar.dc.dsw.bean.ListagemPorCidadeBean" />
 	
-	<fmt:bundle basename="messages">
-		<strong>Acesso ao Sistema</strong><br>
-		<a href="login.jsp" title="Fazer login">Entre</a><br><br>
+		<strong><fmt:message key="system_access"/></strong><br>
+		<a href="login.jsp" title="Fazer login"><fmt:message key="entrar"/></a><br><br>
 		<form method="post" action="index.jsp">
 	    	<tr>
 	        	<td colspan="2"> 
-	                <input type="submit" name="voltar" value="Voltar para Página Inicial"/>
+	        		<fmt:message key="voltar" var="voltarMessage"/>
+	                <input type="submit" name="voltar" value="${voltarMessage}"/>
 	            </td>
 	        </tr>
 	    </form>
@@ -30,10 +33,10 @@
 		<form name="form">
 			<table border="1" style="width: 400px; border: 1px solid black">
 				<tr>
-					<td>Cidades com hotéis:</td>
+					<td><fmt:message key="cidades_com_hoteis"/>:</td>
 					<td>
 						<select id="cidade" name="cidade" onchange="cidadeSelecionada(this.value)">
-							<option value="--">Selecione a cidade</option>
+							<option value="--"><fmt:message key="select_city"/></option>
 							<c:forEach items="${bean.getHotelPorCidade()}" var="cidade">
 								<option value="${cidade.getCidade()}">${cidade.getCidade()}</option>
 							</c:forEach>
@@ -41,7 +44,7 @@
 					</td>
 				</tr>
 				<tr id="hoteis">
-					<td>Hotéis desta cidade:</td>
+					<td><fmt:message key="hoteis_da_cidade"/>:</td>
 					<td>
 						<select id="hotel" name="hotel" onchange="apresenta()"></select>
 					</td>
@@ -49,6 +52,6 @@
 			</table>
 		</form>
 		<br>
-	</fmt:bundle>
 </body>
+</fmt:bundle>
 </html>
