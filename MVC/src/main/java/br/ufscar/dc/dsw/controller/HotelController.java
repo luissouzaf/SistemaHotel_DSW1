@@ -50,8 +50,6 @@ public class HotelController extends HttpServlet {
 
 		try {
 			String verifica = request.getParameter("AreaParaNaoCadastrados");
-			while (verifica == null)
-				verifica = request.getParameter("AreaParaNaoCadastrados");
 
 			if (verifica.equals("listaTodosHoteis"))
 				listaTodosHoteis(request, response);
@@ -59,7 +57,7 @@ public class HotelController extends HttpServlet {
 				if(verifica.equals("listaHoteisPorCidade"))
 					listaHoteisPorCidade(request, response);
         } catch (RuntimeException | IOException | ServletException e) {
-        	throw new ServletException(e);
+        	//throw new ServletException(e);
         }
 
     	Hotel usuario = (Hotel) request.getSession().getAttribute("usuarioLogado");
