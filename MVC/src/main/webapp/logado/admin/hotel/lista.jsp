@@ -2,34 +2,38 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <html>
+<fmt:bundle basename="messages">
 <head>
-<title>Gerenciamento de Hotéis</title>
+<title>
+	<fmt:message key="formularioAdminHotelTitle"/>
+</title>
 </head>
 <body>
 	<%
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
 	<div align="center">
-		<h1>Gerenciamento de Hotéis</h1>
+		<h1><fmt:message key="formularioAdminHotelTitle"/></h1>
 		<h2>
-			<a href="/<%=contextPath%>/admin/">Menu Principal</a> &nbsp;&nbsp;&nbsp; <a
-				href="/<%=contextPath%>/admin/hoteis/cadastro">Adicione Novo Hotel</a>
-				
+			<a href="/<%=contextPath%>/admin/"><fmt:message key="menu_principal"/></a> &nbsp;&nbsp;&nbsp; <a
+				href="/<%=contextPath%>/admin/hoteis/cadastro"><fmt:message key="add_hotel"/></a>
 		</h2>
 	</div>
 
 	<div align="center">
 		<table border="1">
-			<caption>Lista de Hoteis</caption>
+			<caption><fmt:message key="listaTodosHoteisCaption"/></caption>
 			<tr>
-				<th>ID</th>
-				<th>CNPJ</th>
-				<th>Nome</th>
-				<th>Cidade</th>
-				<th>Email</th>
-				<th>Senha</th>
-				<th>Acões</th>
+				<th><fmt:message key="id"/></th>
+				<th><fmt:message key="cnpj"/></th>
+				<th><fmt:message key="nome"/></th>
+				<th><fmt:message key="cidade"/></th>
+				<th><fmt:message key="email"/></th>
+				<th><fmt:message key="senha"/></th>
+				<th><fmt:message key="actions"/></th>
 			</tr>
 			<c:forEach var="hotel" items="${requestScope.listaHotel}">
 				<tr>
@@ -39,15 +43,16 @@
 					<td>${hotel.cidade}</td>
 					<td>${hotel.email}</td>
 					<td>${hotel.senha}</td>
-					<td><a href="/<%= contextPath%>/admin/hoteis/edicao?id=${hotel.id}">Edição</a>
+					<fmt:message key="confirm_delete" var="confirmMessage"/>
+					<td><a href="/<%= contextPath%>/admin/hoteis/edicao?id=${hotel.id}"><fmt:message key="edit"/></a>
 						&nbsp;&nbsp;&nbsp;&nbsp; <a
 						href="/<%= contextPath%>/admin/hoteis/remocao?id=${hotel.id}"
-						onclick="return confirm('Tem certeza de que deseja excluir este item?');">
-							Remoção </a></td>
+						onclick="return confirm('${confirmMessage}');">
+							<fmt:message key="remove"/> </a></td>
 				</tr>
 			</c:forEach>
 		</table>
 	</div>
-
 </body>
+</fmt:bundle>
 </html>
