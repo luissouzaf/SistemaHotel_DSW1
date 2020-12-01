@@ -2,17 +2,21 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<html>
+<fmt:bundle basename="messages">
 <head>
-<title>Gerenciamente de Hotéis</title>
+<title>
+	<fmt:message key="formularioAdminHotelTitle"/>
+</title>
 </head>
 
 <body>
 	<div align="center">
-		<h1>Gerenciamento de Hotéis</h1>
+		<h1><fmt:message key="formularioAdminHotelTitle"/></h1>
 		<h2>
-			<a href="lista">Lista de Hotéis</a>
+			<a href="lista"><fmt:message key="listaTodosHoteisCaption"/></a>
 		</h2>
 	</div>
 	<div align="center">
@@ -37,5 +41,5 @@
 		</ul>
 	</c:if>
 </body>
-
+</fmt:bundle>
 </html>
