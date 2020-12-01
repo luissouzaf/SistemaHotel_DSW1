@@ -1,27 +1,30 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
+<fmt:bundle basename="messages">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Página do Administrador</title>
+        <title><fmt:message key="loginAdminTitle"/></title>
     </head>
     <body>
-     <h1>Página do Administrador</h1>
-     <p>Olá ${sessionScope.usuarioLogado.nome}</p>
+     <h1><fmt:message key="loginAdminTitle"/></h1>
+     <p><fmt:message key="hello"/> ${sessionScope.usuarioLogado.nome}</p>
 
 	    <ul>
 	    	<li>
-	        	<a href="hoteis/">Gerenciamento de Hotéis</a>
+	        	<a href="hoteis/"><fmt:message key="formularioAdminHotelTitle"/></a>
 	        </li>
 	        
 	        <li>
-	        	<a href="reservas/">Gerenciamento de Sites de Reserva</a>
+	        	<a href="reservas/"><fmt:message key="formularioAdminSiteReservaTitle"/></a>
 	        </li>
 	        
         </ul>
 
-        <a href="${pageContext.request.contextPath}/logout.jsp">Sair</a>
-
+        <a href="${pageContext.request.contextPath}/logout.jsp"><fmt:message key="logout"/></a>
     </body>
+</fmt:bundle>
 </html>
