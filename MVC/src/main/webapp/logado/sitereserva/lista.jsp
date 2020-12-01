@@ -2,10 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
+<fmt:bundle basename="messages">
     <head>
-        <title>Menu do Sistema</title>
+        <title>
+        	<fmt:message key="systemMenu"/>
+        </title>
     </head>
     
     <body>
@@ -13,8 +18,8 @@
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
 	<div align="center">
-		<h1>Página do Site de Reservas</h1>
-		<p>Olá ${sessionScope.usuarioLogado.nome}</p>
+		<h1><fmt:message key="sitePage"/></h1>
+		<p><fmt:message key="hello"/> ${sessionScope.usuarioLogado.nome}</p>
 		<!-- <h2>
 				<a href="/<%=contextPath%>/sitereservauser/">Menu Principal</a> &nbsp;&nbsp;&nbsp;
 				<a href="/<%=contextPath%>/sitereservauser/cadastro">Adicione Nova Promoção</a>
@@ -24,15 +29,15 @@
 
 	<div align="center">
 		<table border="1">
-			<caption>Lista de Promoções deste site</caption>
+			<caption><fmt:message key="promoListBySite"/></caption>
 			<tr>
-				<th>ID</th>
-				<th>Preço</th>
-				<th>Início da Promoção</th>
-				<th>Fim da Promoção</th>
-				<th>CNPJ do Hotel</th>
-				<th>Url do site</th>
-				<th>Acões</th>
+				<th><fmt:message key="id"/></th>
+				<th><fmt:message key="preco"/></th>
+				<th><fmt:message key="promo_inicio"/></th>
+				<th><fmt:message key="promo_fim"/></th>
+				<th><fmt:message key="cnpjHotel"/></th>
+				<th><fmt:message key="urlSite"/></th>
+				<th><fmt:message key="actions"/></th>
 			</tr>
 			<c:forEach var="promohotel" items="${requestScope.listaPromoHotel}">
 				<tr>
@@ -53,8 +58,9 @@
 	</div>
     <ul>
         <li>
-            <a href="${pageContext.request.contextPath}/logout.jsp">Sair</a>
+            <a href="${pageContext.request.contextPath}/logout.jsp"><fmt:message key="logout"/></a>
         </li>
     </ul>
 </body>
+</fmt:bundle>
 </html>
