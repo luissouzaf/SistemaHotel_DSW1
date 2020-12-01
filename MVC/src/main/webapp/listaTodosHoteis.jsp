@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ page isELIgnored="false"%>
 <html>
+<fmt:bundle basename="messages">
 <head>
-	<title>Lista de hotéis da tabela Hotel</title>
+	<title>
+		<fmt:message key="listaTodosHoteisTitle"/>
+	</title>
 	<script src="js/ajaxTipoListagem.js"></script>
 </head>
 <body>
@@ -14,24 +18,25 @@
 	
 	<jsp:useBean id="bean" class="br.ufscar.dc.dsw.bean.ListagemPorCidadeBean"/>
 	
-	<strong>Acesso ao Sistema</strong><br>
-	<a href="login.jsp" title="Fazer login">Entre</a><br><br>
+	<strong><fmt:message key="system_access"/></strong><br>
+	<a href="login.jsp" title="Fazer login"><fmt:message key="entrar"/></a><br><br>
 	<form method="post" action="index.jsp">
     	<tr>
-        	<td colspan="2"> 
-                <input type="submit" name="voltar" value="Voltar para Página Inicial"/>
+        	<td colspan="2">
+        		<fmt:message key="voltar" var="voltarMessage"/> 
+                <input type="submit" name="voltar" value="${voltarMessage}"/>
             </td>
         </tr>
     </form>
 
 	<div align="center">
 		<table border="1">
-			<caption>Lista de Hotéis</caption>
+			<caption><fmt:message key="listaTodosHoteisCaption"/></caption>
 			<tr>
-				<th>Nome</th>
-				<th>Email</th>
-				<th>Cidade</th>
-				<th>CNPJ</th>
+				<th><fmt:message key="nome"/></th>
+				<th><fmt:message key="email"/></th>
+				<th><fmt:message key="cidade"/></th>
+				<th><fmt:message key="cnpj"/></th>
 			</tr>
 			<c:forEach var="hotel" items="${requestScope.listaHoteis}">
 				<tr>
@@ -44,4 +49,5 @@
 		</table>
 	</div>
 </body>
+</fmt:bundle>
 </html>
