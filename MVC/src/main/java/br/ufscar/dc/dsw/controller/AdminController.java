@@ -29,12 +29,13 @@ public class AdminController extends HttpServlet {
     	Erro erros = new Erro();
     	String[] dominio = usuario.getLogin().split("@"); //para definir o papel do usuario pelo dominio do email
 
-    	if (usuario == null) {
+    	if (usuario == null)
     		response.sendRedirect(request.getContextPath());
-    	} else if (dominio[1].equals("admin.com")) {
+    	else if (dominio[1].equals("admin.com")) {
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/admin/login_admin.jsp");
             dispatcher.forward(request, response);
-    	} else {
+    	}
+    	else {
     		erros.add("Acesso não autorizado!");
     		erros.add("Apenas Papel [ADMIN] tem acesso a essa página");
     		request.setAttribute("mensagens", erros);
