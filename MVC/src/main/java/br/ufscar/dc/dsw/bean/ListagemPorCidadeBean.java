@@ -18,11 +18,10 @@ public class ListagemPorCidadeBean {
 	public List<Hotel> getHotelPorCidade(String nome) {
 		HotelDAO dao = new HotelDAO();
 		List<Hotel> listaDeHoteisPorCidade;
-		if (nome.length() > 0) {
+		if (nome.length() > 0)
 			listaDeHoteisPorCidade = dao.getByNomeCidade(nome);
-		} else {
+		else
 			listaDeHoteisPorCidade = dao.getAll();
-		}
 		return listaDeHoteisPorCidade;
 	}
 }
