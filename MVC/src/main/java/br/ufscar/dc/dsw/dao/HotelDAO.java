@@ -162,7 +162,6 @@ public class HotelDAO extends GenericDAO {
         return hotel;
     }
 
-    // Classe não está sendo chamanda
     public List<Hotel> getByNomeCidade(String nomeCidade){
 		
 		List<Hotel> listaHotel = new ArrayList<>();
