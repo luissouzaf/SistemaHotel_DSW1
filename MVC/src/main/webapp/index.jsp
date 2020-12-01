@@ -5,39 +5,41 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
-
+<fmt:bundle basename="messages">
 <head>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Sistema para criação de promoções de quarto de hotel em sites de reservas</title>
+    <title>
+		<fmt:message key="indexTitle"/>
+    </title>
 </head>
 
 <body>
 	<%
 		String contextPath = request.getContextPath().replace("/", "");
 	%>
-    <fmt:bundle basename="acessos">
     
-	    <strong>Acesso ao Sistema</strong><br>
-	    <a href="login.jsp" title="Fazer login">Entre</a><br><br>
+	    <strong><fmt:message key="system_access"/></strong><br>
+	    <a href="login.jsp" title="Fazer login"><fmt:message key="faca_login"/></a><br><br>
 
 	    <form name="fomularioTipoDeListagem" action="hoteluser" method="POST">
 			<fieldset>
-				<legend>Área para não cadastrados</legend>
+				<legend><fmt:message key="non_registered"/></legend>
 				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaTodosHoteis" checked/>
-				<label for="listaTodosHoteis">Listar todos os hotéis ordenados por nome</label><br>
+				<label for="listaTodosHoteis"><fmt:message key="list_by_name"/></label><br>
 				<input type="radio" name ="AreaParaNaoCadastrados" title="área para não cadastrados" value="listaHoteisPorCidade" />
-				<label for="listaHoteisPorCidade">Listar todos os hotéis ordenados por cidade</label><br>
-				<input type="submit" value="Listar"/>
+				<label for="listaHoteisPorCidade"><fmt:message key="list_by_city"/></label><br>
+				<fmt:message key="list" var="listMessage"/>
+				<input type="submit" value="${listMessage}"/>
 			</fieldset>
 		</form>
-    </fmt:bundle>
     
 	<footer>
 	    <strong> <%= new Date() %></strong>
 	</footer>
 </body>
+</fmt:bundle>
 </html>
